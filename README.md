@@ -1,13 +1,13 @@
 # ceneo_scraper
 ## Etap 1 - pobranie składowych pojedynczej opinii
-- opinia: li.reviev-box
-- identyfikator: li.reviev-box["data-entry-id"]
+- opinia: li.review-box
+- identyfikator: li.review-box["data-entry-id"]
 - autor: div.reviewer-name-line
 - rekomendacja: div.product-review-summary > em
 - gwiazdki: span.review-score-count
 - potwierdzona zakupem: div.product-review-pz
-- data wystawienia: span.reviev-time > time["datetime"] - pierwszy element listy
-- data zakupu: span.reviev-time > time["datetime"] - drugi element listy
+- data wystawienia: span.review-time > time["datetime"] - pierwszy element listy
+- data zakupu: span.review-time > time["datetime"] - drugi element listy
 - przydatna: span[id=^votes-yes]
              button.vote-yes["data-total-vote"]
              button.vote-yes > span
