@@ -6,7 +6,7 @@ import pprint
 
 #adres URL przykłdowej strony z opiniami
 url_prefix = "https://www.ceneo.pl"
-product_id = input("Podaj kod produktu")
+product_id = input("Podaj kod produktu: ")
 url_postfix = "#tab=revievs"
 url = url_prefix + "/" + product_id + url_postfix
 
@@ -20,9 +20,6 @@ while url:
 
     #wydobycie z kodu HTML strony fragmentów odpowiadających poszczególnym opiniom
     opinions = page_tree.find_all("li", "review-box")
-
-    #wydobycie składowych dla pojedynczej opinii
-    opinion = opinions.pop()
 
     for opinion in opinions:
         opinion_id = opinion["data-entry-id"]
@@ -73,7 +70,7 @@ while url:
 
         opinions_list.append(opinion_dict)
     try:    
-        url = url_prefix + page_tree.find("a", "pagination_next")["href"]
+        url = url_prefix + page_tree.find("a", "pagination__next")["href"]
     except TypeError:
         url = None
 
