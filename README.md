@@ -25,3 +25,7 @@
 ## Etap 4
 -transformacja danych
 -refraktoryzacja kodu
+## Etap 5
+-zapis danych do obiektu dataframe (ramka danych)
+-wykonanie podstawowych obliczeń na danych w ramce
+-wykonanie prostych wykresów na podstawie danych w ramce danych
