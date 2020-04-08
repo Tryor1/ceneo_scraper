@@ -26,6 +26,14 @@ tags = {
     "purchased":["div", "product-review-pz", "em"]
 }
 
+#funkcja do usuwania znaków formatujących
+def remove_whitespaces(string):
+    try:
+        return string.replace("\n", ", ").replace("\r", ", ")
+    except AttributeError:
+        pass
+
+
 #adres URL przykładowej strony z opiniami
 url_prefix = "https://www.ceneo.pl"
 product_id = input("Podaj kod produktu: ")
@@ -36,7 +44,7 @@ url = url_prefix+"/"+product_id+url_postfix
 opinions_list = []
 
 while url:
-    #poranie kodu html strony zpodanego URL
+    #pobranie kodu html strony zpodanego URL
     page_respons = requests.get(url)
     page_tree = BeautifulSoup(page_respons.text, 'html.parser')
 
@@ -48,7 +56,12 @@ while url:
         features = {key:extract_feature(opinion, *args)
                     for key, args in tags.items()}
         features["purchased"] = (features["purchased"]=="Opinia potwierdzona zakupem")
-        features["opinion_id"] = opinion["data-entry-id"]
+        features["opinion_id"] = int(opinion["data-entry-id"])
+        features["useful"] = int(features["useful"])
+        features["useless"] = int(features["useless"])
+        features["content"] = remove_whitespaces(features["content"])
+        features["pros"] = remove_whitespaces(features["pros"])
+        features["cons"] = remove_whitespaces(features["cons"])
         dates = opinion.find("span", "review-time").find_all("time")
         features["review_date"] = dates.pop(0)["datetime"]
         try:
