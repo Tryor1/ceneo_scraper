@@ -29,3 +29,15 @@
 -zapis danych do obiektu dataframe (ramka danych)
 -wykonanie podstawowych obliczeń na danych w ramce
 -wykonanie prostych wykresów na podstawie danych w ramce danych
+## Etap 6
+-struktura aplikacji
+/CeneoScraper
+/run.py
+/config.py
+/app
+/init.py /views.py
+/models.py /scraper.py /analyzer.py /opinions_json /static/
+/figures_png /main.css /templates/
+/layout.html
+/requirements.txt
+/README.md /.venv
