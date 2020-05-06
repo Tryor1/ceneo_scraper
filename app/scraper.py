@@ -13,27 +13,7 @@ def extract_feature(opinion, tag, tag_class, child=None):
             return opinion.find(tag,tag_class).get_text().strip()
     except AttributeError:
         return None
-
-tags = {
-    "recommendation":["div","product-review-summary", "em"],
-    "stars":["span", "review-score-count"],
-    "content":["p","product-review-body"],
-    "author":["div", "reviewer-name-line"],
-    "pros":["div", "pros-cell", "ul"],
-    "cons":["div", "cons-cell", "ul"], 
-    "useful":["button","vote-yes", "span"],
-    "useless":["button","vote-no", "span"],
-    "purchased":["div", "product-review-pz", "em"]
-}
-
-#funkcja do usuwania znaków formatujących
-def remove_whitespaces(string):
-    try:
-        return string.replace("\n", ", ").replace("\r", ", ")
-    except AttributeError:
-        pass
-
-
+        
 #adres URL przykładowej strony z opiniami
 url_prefix = "https://www.ceneo.pl"
 product_id = input("Podaj kod produktu: ")
@@ -68,16 +48,20 @@ while url:
             features["purchase_date"] = dates.pop(0)["datetime"]
         except IndexError:
             features["purchase_date"] = None
+        except TypeError:
+            features["purchase_date"] = None
 
         opinions_list.append(features)
 
     try:
         url = url_prefix+page_tree.find("a", "pagination__next")["href"]
+    except IndexError:
+        url = None
     except TypeError:
         url = None
     print(url)
 
-with open("./opinions_json/"+product_id+'.json', 'w', encoding="utf-8") as fp:
+with open("./app/opinions_json/"+product_id+'.json', 'w', encoding="utf-8") as fp:
     json.dump(opinions_list, fp, ensure_ascii=False, indent=4, separators=(',', ': '))
 
 print(len(opinions_list))

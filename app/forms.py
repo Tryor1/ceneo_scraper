@@ -7,8 +7,8 @@ class ProductForm(FlaskForm):
         "Podaj kod produktu z serwisu Ceneo.pl: ",
         validators=[
             DataRequired("Musisz podać kod produktu!"),
-            Length(min=8, max=8, message="Kod produktu musi mieć 8 znaków!"),
-            Regexp("^[0-9]{8}$", message="Kod produktu może zawierać tyko cyfry!")
+            Length(min=7, max=8, message="Kod produktu musi mieć 8 znaków!"),
+            Regexp("^[0-9]+$", message="Kod produktu może zawierać tyko cyfry!")
         ]
     )
     submit = SubmitField("Pobierz")
