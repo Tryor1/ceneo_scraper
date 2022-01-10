@@ -1,4 +1,4 @@
-# ceneo_scraper
+# CeneoScrapper
 ## Etap 1 - pobranie składowych pojedynczej opinii
 - opinia: li.review-box
 - identyfikator: li.review-box["data-entry-id"]
@@ -17,20 +17,20 @@
 - treść: p.product-review-body
 - wady: div.cons-cell > ul
 - zalety: div.pros-cell > ul
-## Etap 2 - pobranie składowych wszystkich opinii z pojedyńczej strony
+## Etap 2 - pobranie składowych wszystkich opinii z poedynczej strony
 - zapisanie składowych opinii w złożonej strukturze danych
-## Etap 3 - pobranie wszystkich opinii o pojedyńczym produkcie
+## Etap 3 - pobranie wszystkich opinii o pojedynczym produkcie
 - przechodzenie po stronach z opiniami
-- eksport opinii do pliku (.csv lub .xlsx lub .json)
+- eksport opinii do pliku (.csv. lub .xlsx lub .json)
 ## Etap 4
--transformacja danych
--refraktoryzacja kodu
+- transformacja danych
+- refaktoryzacja kodu
 ## Etap 5
--zapis danych do obiektu dataframe (ramka danych)
--wykonanie podstawowych obliczeń na danych w ramce
--wykonanie prostych wykresów na podstawie danych w ramce danych
-## Etap 6
--struktura aplikacji
+- zapis danych do obiektu dataframe (ramka danych)
+- wykonamie podstawowych obliczeń na danych w ramce danych
+- wykonanie prostych wykresów na podstawie danych w ramce danych
+## Etap 6 - przygotowanie interfajsu webowego aplikcaji (Flask)
+- struktura aplikacji
 >    /CeneoScraper/  
 >>        /run.py  
 >>        /config.py  
@@ -49,5 +49,5 @@
 >>>        /requirements.txt  
 >>>        /README.md
 >>>        /.venv/
--widoki (Jinja)
--routingi
+- widoki (Jinja)
+- routingi
